@@ -3,7 +3,7 @@ import '../css/FrontPage.css';
 //VERY IMPORTANT TO IMPORT STYLING!
 import '../css/Interface.css';
 import Form from './Form';
-import TextToSpeechButton from './TextToSpeechButton';
+import TextToSpeech from './TextToSpeechButton';
 
 import Input from './Input.jsx';
 import Output from './Output.jsx';

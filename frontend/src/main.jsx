@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import './css/index.css'
 import Client from "./components/Client.jsx";
+import 'regenerator-runtime/runtime'
 
 // This file is our main router page, where we can add new pages to our app!
 
