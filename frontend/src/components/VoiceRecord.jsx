@@ -54,8 +54,8 @@ function VoiceRecorder() {
 
     return (
         <div>
-            <button onClick={startRecording} disabled={recording}>Start Recording</button>
-            <button onClick={stopRecording} disabled={!recording}>Stop Recording</button>
+            <button className="submitButton" onClick={startRecording} disabled={recording}>Start Recording</button>
+            <button className="submitButton" onClick={stopRecording} disabled={!recording}>Stop Recording</button>
             <h2>Your response</h2>
             {audioUrl ? <p>{audioUrl}</p> : <p>Waiting for response from GPT</p>}
 

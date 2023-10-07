@@ -53,7 +53,7 @@ app.post('/transcribe', upload.single('audio'), async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4",
             messages: [{
-                role: "user", content:`Translate this to english, only respond with the translation, nothing else.: ${transcript.text}`
+                role: "user", content:`Translate this to english, try staying as true to the meaning  only respond with the translation, nothing else.: ${transcript.text}`
             }]
         })
 

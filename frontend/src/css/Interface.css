@@ -1,23 +1,18 @@
 .client {
-
-    padding: 1em;
+  /* padding: 1em;
     background-color: #37378d;
-    border-radius: 30px;
-
+    border-radius: 30px; */
 }
 
-.clientDisplay   {
-
+.clientDisplay {
 }
 
 .input {
-    padding: 1em;
-    background-color: #111931;
-
+  padding: 1em;
+  background-color: #111931;
 }
 
 .output {
-
-    padding: 1em;
-    background-color: #184b20;
+  padding: 1em;
+  background-color: #184b20;
 }

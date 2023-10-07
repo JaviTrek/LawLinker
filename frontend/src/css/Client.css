@@ -1,0 +1,136 @@
+.client {
+
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 1rem;
+
+}
+.intro {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #b5b4b4;
+  line-height: 2.3rem;
+  margin-left: 5rem;
+  margin-top: 2rem;
+}
+
+.form-container {
+  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 30vw;
+  max-width: 50rem;
+  margin-left: 5rem;
+  margin-top: 2rem;
+
+  position: relative;
+}
+
+.input-form {
+  width: 100%;
+  display: inline-block;
+  font-weight: 300;
+  font-size: medium;
+  padding: 1rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: rgb(59, 59, 59);
+  outline: none;
+  margin-top: -0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.input-form:hover {
+  border: 0.5px solid #fceb09;
+}
+
+.input-form:focus {
+  outline: 0.5px solid #fceb09;
+}
+
+.lebal-form {
+  text-align: left;
+  font-size: 19px;
+  font-weight: 300;
+  display: block;
+  margin: 0.5rem 0.1rem 1rem 1rem;
+  letter-spacing: 1px;
+}
+
+.submitButton {
+  background-color: #fceb09;
+  border: none;
+  display: flex;
+
+  border-radius: 1rem;
+  padding: 1rem 5rem;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 300;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: inline;
+  float: none;
+}
+
+.submitButton:hover {
+  background-color: #e7e397;
+}
+
+.submitButton:active {
+  transform: scale(0.95);
+  transition: 10ms;
+}
+
+.centerDiv {
+  margin: auto;
+  text-align: center;
+}
+
+.orLine {
+  display: inline-block;
+  position: absolute;
+  top: 42%;
+  left: 40%;
+  font-size: 5rem;
+  color: #fceb09;
+  letter-spacing: 1rem;
+  font-weight: 300;
+}
+
+.orLine-afterText {
+  display: inline-block;
+  position: absolute;
+  top: 53%;
+  left: 40%;
+  font-size: 2rem;
+  color: rgb(235, 235, 235);
+  font-weight: 100;
+}
+
+.leftTopImage {
+  margin-top: 1rem;
+  object-fit: fill;
+  max-height: 14rem;
+  width: 5rem;
+  position: absolute;
+  top: 40rem;
+  right: 21rem;
+}
+
+.insideBox {
+  width: 28rem;
+  height: 28rem;
+  border-bottom: 1px solid white;
+  display: inline-block;
+  position: absolute;
+  top: 10rem;
+  left: 53rem;
+}
+
+.leftTopImage:active {
+  cursor: pointer;
+  border-bottom: 1px solid red;
+}
