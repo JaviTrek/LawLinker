@@ -1,4 +1,4 @@
-import '../css/FrontPage.css'
+// import '../css/FrontPage.css'
 
 //VERY IMPORTANT TO IMPORT STYLING!
 import "../css/Interface.css"
@@ -10,12 +10,12 @@ export default function Client() {
 
   return (
     <div className="client">
-      <h1>Client page</h1>
+      {/* <h1>Client page</h1>
       <p className="read-the-docs">
         I'm ready to be worked on!
-      </p>
+      </p> */}
         <Input/>
-        <Output/>
+        {/* <Output/> */}
     </div>
   )
 }
