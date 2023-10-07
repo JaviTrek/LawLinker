@@ -9,6 +9,7 @@ import voice from '../assets/voice.svg';
 import Input from './Input.jsx';
 import Output from './Output.jsx';
 import { useForm } from 'react-hook-form';
+import VoiceRecord from "./VoiceRecord.jsx";
 
 export default function Client() {
   const {
@@ -48,6 +49,10 @@ export default function Client() {
           <img src={voice} alt="voice-mic" className="leftTopImage" />
         </button>
       </div>
+
+
+        <h1>GPT</h1>
+        <VoiceRecord/>
     </div>
   );
 }
