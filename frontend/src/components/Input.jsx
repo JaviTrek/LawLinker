@@ -14,7 +14,8 @@ export default function Input() {
     const {
         register, 
         handleSubmit, 
-        formState:{errors}
+        reset,
+        formState:{errors},
     } = useForm({
         defaultValues: {
             firstName: "",
@@ -24,11 +25,12 @@ export default function Input() {
             emailAddress: "",
             caseType: "",
             caseDescription: "",
-        }
+        },
     });
 
     const submitNewCase = (formValues) => {
         console.log(formValues)
+        reset();
     }
 
     // const [formData, setFormData] = useState({
@@ -114,7 +116,7 @@ export default function Input() {
             <div className="form-input">
                 <label>Case Type: </label>
                 <input
-                    class="input-field"
+                    className="input-field"
                     type="text"
                     // name="natureOfCase"
                     // value={formData.natureOfCase}
@@ -127,7 +129,6 @@ export default function Input() {
                 <label>Case Description: </label>
                 <textarea
                     className="input-field"
-                    class="input-field"
                     rows="4"
                     // name="desiredOutcome"
                     // value={formData.desiredOutcome}
