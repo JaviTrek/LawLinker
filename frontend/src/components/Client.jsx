@@ -4,9 +4,12 @@ import '../css/FrontPage.css';
 import '../css/Interface.css';
 import Form from './Form';
 
+import voice from '../assets/voice.svg';
+
 import Input from './Input.jsx';
 import Output from './Output.jsx';
 import { useForm } from 'react-hook-form';
+import Dictaphone from './Dictaphone';
 
 export default function Client() {
   const {
@@ -30,7 +33,22 @@ export default function Client() {
   };
   return (
     <div className="client">
-      <Form></Form>
+      <h1 className="intro">
+        Skip the hassle of typing. LawLinker's AI effortlessly transcribes your
+        spoken responses
+      </h1>
+      {/* <img src={aiVoice} alt="" className="leftTopImage" /> */}
+      <Form />
+      <span className="orLine">OR</span>
+      <span className="orLine-afterText">
+        talk to our <br></br> AI assistance{' '}
+      </span>
+      <div className="voice-container">
+        <div className="insideBox"></div>
+        <button className="buttonVoice" onClick={() => console.log('ss')}>
+          <img src={voice} alt="voice-mic" className="leftTopImage" />
+        </button>
+      </div>
     </div>
   );
 }

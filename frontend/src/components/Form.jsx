@@ -1,10 +1,30 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useEffect, useState } from 'react';
+import { useForm, useFormContext, FormProvider } from 'react-hook-form';
 import '../css/Client.css';
 import submit from '../assets/submit.svg';
 
 const Form = () => {
-  const { control, register, handleSubmit } = useForm();
+  const defaultValues = {
+    firstName: 'alii',
+    lastName: 'beee',
+    phoneNumber: 'dd',
+    zipCode: 'dd',
+    emailAddress: 'fww@gmail.com',
+    caseType: 'carAccident',
+  };
+  // const [updatedValues, setUpdatedValues] = useState('');
+
+  // const handleUpdate = () => {
+  //   setUpdatedValues(defaultValues);
+  // };
+
+  // useEffect(() => {
+  //   handleUpdate();
+  // }, [defaultValues]);
+
+  const { control, register, handleSubmit, setValue } = useForm({
+    defaultValues: defaultValues,
+  });
 
   const onSubmit = (data) => {
     console.log(data);
