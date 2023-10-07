@@ -53,21 +53,24 @@ app.post('/transcribe', upload.single('audio'), async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4",
             messages: [{
-                role: "user", content:`Translate this to english: ${transcript.text}`
+                role: "user", content:`Translate this to english, only respond with the translation, nothing else.: ${transcript.text}`
             }]
         })
 
         console.log(completion.choices[0].message)
         console.log(transcript);
-
+        res.set('Content-Type', 'text/plain');
+        res.json({ transcription: completion.choices[0].message.content});
         // Clean up: Close and remove the temporary file
         await tmpFile.cleanup();
 
-        return transcript.text;
+
     } catch (error) {
         console.error('Backend Error:', error.message);
         res.status(500).json({ error: 'Error transcribing audio.', details: error.message });
     }
+
+
 });
 
 // IMPLEMENT GPT

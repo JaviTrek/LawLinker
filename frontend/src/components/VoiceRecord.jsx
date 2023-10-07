@@ -5,6 +5,7 @@ function VoiceRecorder() {
     const [audioUrl, setAudioUrl] = useState(null);
     const mediaRecorderRef = useRef(null);
     const audioChunksRef = useRef([]);
+    const [transcript, setTranscript] = useState()
 
     const startRecording = async () => {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -24,12 +25,17 @@ function VoiceRecorder() {
             formData.append('audio', audioBlob);
 
             try {
-                const response = await fetch('http://localhost:4000/transcribe', {
+                 await fetch('http://localhost:4000/transcribe', {
                     method: 'POST',
                     body: formData
-                });
-                const data = await response.json();
-                setAudioUrl(data.text);
+                }).then(response => response.json())
+                     .then(data => {
+                         console.log(data.transcription);
+                         setAudioUrl(data.transcription);
+                     })
+                     .catch(error => {
+                         console.error('Error:', error);
+                     });
             } catch (error) {
                 console.error("Error transcribing:", error.message);
             }
@@ -50,7 +56,9 @@ function VoiceRecorder() {
         <div>
             <button onClick={startRecording} disabled={recording}>Start Recording</button>
             <button onClick={stopRecording} disabled={!recording}>Stop Recording</button>
-            {audioUrl && <p>{audioUrl}</p>}
+            <h2>Your response</h2>
+            {audioUrl ? <p>{audioUrl}</p> : <p>Waiting for response from GPT</p>}
+
         </div>
     );
 }
