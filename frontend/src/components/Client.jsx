@@ -5,6 +5,7 @@ import "../css/Interface.css"
 
 import Input from "./Input.jsx";
 import Output from "./Output.jsx";
+import VoiceRecord from "./VoiceRecord.jsx";
 
 export default function Client() {
 
@@ -16,7 +17,10 @@ export default function Client() {
       </p>
         <Input/>
         <Output/>
+        <br/>
+        <VoiceRecord/>
     </div>
+
   )
 }
 
