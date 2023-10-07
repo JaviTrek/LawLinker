@@ -9,7 +9,6 @@ import voice from '../assets/voice.svg';
 import Input from './Input.jsx';
 import Output from './Output.jsx';
 import { useForm } from 'react-hook-form';
-import Dictaphone from './Dictaphone';
 
 export default function Client() {
   const {
