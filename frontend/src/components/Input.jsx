@@ -2,7 +2,6 @@
 
 //VERY IMPORTANT TO IMPORT STYLING!
 import "../css/Interface.css"
-// import {useState} from "react";
 import {useForm} from "react-hook-form";
 
 // function CreateNewCase(e) {
@@ -32,18 +31,6 @@ export default function Input() {
         console.log(formValues)
         reset();
     }
-
-    // const [formData, setFormData] = useState({
-    //     firstName: '',
-    //     lastName: '',
-    //     emailAddress: '',
-    //     address: '',
-    //     phoneNumber: '',
-    //     birthDate: '',
-    //     natureOfCase: '', // can be something like contract dispute, felony drug chages, divorce and property divison, will drafting and probate
-    //     desiredOutcome: '', // can be something like damages, injuntion, custody arrangement
-    //     dateOfIncident: '',
-    // });
 
     // const handleChange = (event) => {
     //     const { name, value } = event.target;
