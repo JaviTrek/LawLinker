@@ -3,6 +3,7 @@ import '../css/FrontPage.css';
 //VERY IMPORTANT TO IMPORT STYLING!
 import '../css/Interface.css';
 import Form from './Form';
+import TextToSpeechButton from './TextToSpeechButton';
 
 import Input from './Input.jsx';
 import Output from './Output.jsx';
@@ -31,6 +32,8 @@ export default function Client() {
   return (
     <div className="client">
       <Form></Form>
+      <TextToSpeech></TextToSpeech>
+      {/* <button className="landingButton">Text to Speech</button> */}
     </div>
   );
 }

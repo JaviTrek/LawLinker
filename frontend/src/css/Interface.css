@@ -16,3 +16,19 @@
   padding: 1em;
   background-color: #184b20;
 }
+
+.textToSpeechButton {
+  background-color: white;
+  border: none;
+  display: flex;
+
+  border-radius: 1rem;
+  padding: 1rem 5rem;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 300;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: inline;
+  float: none;
+}
