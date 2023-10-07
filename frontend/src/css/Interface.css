@@ -10,10 +10,17 @@
 
 }
 
-.input {
+.form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
     padding: 1em;
     background-color: #111931;
+}
 
+.form-input {
+    margin-bottom: 10px;
 }
 
 .output {
