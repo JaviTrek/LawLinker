@@ -1,31 +1,51 @@
-import { useState } from 'react'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '/vite.svg'
-import '../css/FrontPage.css'
+import { useState } from 'react';
+import reactLogo from '../assets/react.svg';
+import viteLogo from '/vite.svg';
+import '../css/FrontPage.css';
+import logo from '../assets/logo10.png';
+
+import leftImage from '../assets/leftImge2.svg';
+
+import React from 'react';
 
 function FrontPage() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-          <h2>Welcome to our project guys!</h2>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <div className="card">
+    <div className="landingContainer">
+      <img src={logo} alt="logo" className="logoLand" />
+      {/* <button className="conatactUs">Contact us</button> */}
 
-          <a href="/client">
-              <button>  Visit the client page! </button>
-              </a>
+      <div className="textContainer">
+        <span className="landingTitle-brand"> LawLinker </span>
+        <span className="landingTitle-title">
+          {' '}
+          Your Legal Ally, Powered by AI
+        </span>
+        <span className="desc">
+          {' '}
+          <br />
+          Welcome to LawLinker, your virtual legal companion powered by the
+          latest <span className="temp">AI technology</span>. LawLinker is your
+          one-stop solution for simplifying the legal process and providing you
+          with valuable insights into your case future
+        </span>
       </div>
 
-    </>
-  )
+      <span className="descLanding"></span>
+      <div className="imgContainer">
+        <img src={leftImage} alt=" -image" className="leftImage" />
+      </div>
+
+      <span className="qtext">Are you Client or Attoreny?</span>
+
+      <a href="/client">
+        <button className="landingButton">Client</button>
+      </a>
+
+      <a href="/client">
+        <button className="landingButtonAtt">Attorney</button>
+      </a>
+    </div>
+  );
 }
 
-export default FrontPage
+export default FrontPage;

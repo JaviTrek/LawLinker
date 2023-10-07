@@ -1,22 +1,36 @@
-import '../css/FrontPage.css'
+import '../css/FrontPage.css';
 
 //VERY IMPORTANT TO IMPORT STYLING!
-import "../css/Interface.css"
+import '../css/Interface.css';
+import Form from './Form';
 
-import Input from "./Input.jsx";
-import Output from "./Output.jsx";
+import Input from './Input.jsx';
+import Output from './Output.jsx';
+import { useForm } from 'react-hook-form';
 
 export default function Client() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      zipCode: '',
+      emailAddress: '',
+      caseType: '',
+      caseDescription: '',
+    },
+  });
 
+  const submitNewCase = (formValues) => {
+    console.log(formValues);
+  };
   return (
     <div className="client">
-      <h1>Client page</h1>
-      <p className="read-the-docs">
-        I'm ready to be worked on!
-      </p>
-        <Input/>
-        <Output/>
+      <Form></Form>
     </div>
-  )
+  );
 }
-
