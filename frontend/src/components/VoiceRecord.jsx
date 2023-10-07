@@ -61,8 +61,10 @@ function VoiceRecorder() {
         <div> 
             {recording ? <img src={stopRec} alt="voice-mic" className="leftTopImage"  onClick={() => stopRecording()} disabled={!recording}></img> : 
             <img src={voice} alt="voice-mic" className="leftTopImage"  onClick={() => startRecording()} disabled={!recording}/>}
-            <h2>Your response</h2>
-            {audioUrl ? <p>{audioUrl}</p> : <p>Waiting for response from GPT</p>}
+            <div className="voice-container">
+                {audioUrl ? <p>{audioUrl}</p> : <p>Click the Mic Button to Start Recording</p>}
+                <div className="insideBox"></div>
+            </div>
         </div>
     );
 }

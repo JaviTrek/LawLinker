@@ -134,3 +134,10 @@
   cursor: pointer;
   border-bottom: 1px solid red;
 }
+
+p {
+  position: absolute;
+  top: 8rem;
+  left: 53rem;
+  margin-right: 110px;
+}
