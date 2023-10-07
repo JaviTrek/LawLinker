@@ -34,12 +34,13 @@ label {
     min-width: 170px;
   }
 
-  input {
+.input-field {
     padding: 5px; 
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 3px;
-  }
+}
+
 button {
     width: 50%;
     margin: 0 auto;

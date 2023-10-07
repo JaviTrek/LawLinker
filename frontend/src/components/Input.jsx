@@ -19,13 +19,11 @@ export default function Input() {
         defaultValues: {
             firstName: "",
             lastName: "",
-            emailAddress: "",
-            address: "",
             phoneNumber: "",
-            birthDate: "",
-            natureOfCase: "",
-            desiredOutcome: "",
-            dateOfIncident: "",
+            zipCode: "",
+            emailAddress: "",
+            caseType: "",
+            caseDescription: "",
         }
     });
 
@@ -56,6 +54,7 @@ export default function Input() {
             <div className="form-input">
                 <label>First Name: </label>
                 <input
+                    className="input-field"
                     type="text"
                         // name="firstName"
                         // value={formData.firstName}
@@ -77,6 +76,30 @@ export default function Input() {
                 <p className="error-message">{errors.lastName?.message}</p>
             </div>
             <div className="form-input">
+                <label>Phone Number: </label>
+                <input
+                    className="input-field"
+                    type="text"
+                    // name="phoneNumber"
+                    // value={formData.phoneNumber}
+                    // onChange={handleChange}
+                    {...register('phoneNumber', {required: "Required"})}
+                />
+                <p className="error-message">{errors.phoneNumber?.message}</p>
+            </div>
+            <div className="form-input">
+                <label>Zip Code: </label>
+                <input
+                    className="input-field"
+                    type="text"
+                    // name="phoneNumber"
+                    // value={formData.phoneNumber}
+                    // onChange={handleChange}
+                    {...register('zipCode', {required: "Required"})}
+                />
+                <p className="error-message">{errors.zipCode?.message}</p>
+            </div>
+            <div className="form-input">
                 <label>Email Address: </label>
                 <input
                     className="input-field"
@@ -89,72 +112,29 @@ export default function Input() {
                 <p className="error-message">{errors.emailAddress?.message}</p>
             </div>
             <div className="form-input">
-                <label>Address: </label>
+                <label>Case Type: </label>
                 <input
-                    type="text"
-                    // name="address"
-                    // value={formData.emailAddress}
-                    // onChange={handleChange}
-                    {...register('address', {required: "Required"})}
-                />
-                <p className="error-message">{errors.address?.message}</p>
-            </div>
-            <div className="form-input">
-                <label>Phone Number: </label>
-                <input
-                    type="text"
-                    // name="phoneNumber"
-                    // value={formData.phoneNumber}
-                    // onChange={handleChange}
-                    {...register('phoneNumber', {required: "Required"})}
-                />
-                <p className="error-message">{errors.phoneNumber?.message}</p>
-            </div>
-            <div className="form-input">
-                <label>Birthdate: </label>
-                <input
-                    type="date"
-                    // name="birthDate"
-                    // value={formData.birthDate}
-                    // onChange={handleChange}
-                    {...register('birthDate', {required: "Required"})}
-                />
-                <p className="error-message">{errors.birthDate?.message}</p>
-            </div>
-            <div className="form-input">
-                <label>Nature of Case: </label>
-                <input
+                    class="input-field"
                     type="text"
                     // name="natureOfCase"
                     // value={formData.natureOfCase}
                     // onChange={handleChange}
-                    {...register('natureOfCase', {required: "Required"})}
-                    placeholder="e.g. divorce "
+                    {...register('caseType', {required: "Required"})}
                 />                
-                <p className="error-message">{errors.natureOfCase?.message}</p>
+                <p className="error-message">{errors.caseType?.message}</p>
             </div>
             <div className="form-input">
-                <label>Desired Outcome: </label>
-                <input
-                    type="text"
+                <label>Case Description: </label>
+                <textarea
+                    className="input-field"
+                    class="input-field"
+                    rows="4"
                     // name="desiredOutcome"
                     // value={formData.desiredOutcome}
                     // onChange={handleChange}
-                    {...register('desiredOutcome', {required: "Required"})}
-                    placeholder="e.g. custody arrangement"
+                    {...register('caseDescription', {required: "Required"})}
                 />
-                <p className="error-message">{errors.desiredOutcome?.message}</p>
-            </div>
-            <div className="form-input">
-                <label>Date of Incident: </label>
-                <input
-                    type="date"
-                    // name="dateOfIncident"
-                    // value={formData.dateOfIncident}
-                    // onChange={handleChange}
-                    {...register('dateOfIncident', {required: "Required"})}
-                />
-                <p className="error-message">{errors.dateOfIncident?.message}</p>
+                <p className="error-message">{errors.caseDescription?.message}</p>
             </div>
             <button type="submit">Create New Case</button>
         </form>
