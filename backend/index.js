@@ -37,18 +37,16 @@ const upload = multer({storage: storage});
 app.post('/transcribe', upload.single('audio'), async (req, res) => {
 
     console.log("received transcribe")
-    console.log(req.file)
+
     try {
 
         // Create a temporary file to save the buffer
         const tmpFile = await tmp.file({postfix: '.wav'});
-        console.log("tmp pass")
         // Write the buffer to the temporary file
         await fs.promises.writeFile(tmpFile.path, req.file.buffer);
-        console.log("fs promise pass")
         // Create a read stream from the temporary file
         const fileStream = fs.createReadStream(tmpFile.path);
-        console.log("filestream pass")
+        console.log("Waiting to transcribe all data!")
         // Use the stream for transcription
         const transcript = await openai.audio.transcriptions.create({
             file: fileStream, model: "whisper-1",
@@ -56,17 +54,43 @@ app.post('/transcribe', upload.single('audio'), async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4", messages: [{
                 role: "user",
-                content: `Given the provided narrative of a client's incident, please structure the information into the following format, but make sure your response is in a stringified json with an attribute case for everything below and an attribute missing information for any of the fields the client did not provide: 
-                {\\"Contact Information\\": {\\"Full Name\\": \\"[Extracted Full Name]\\", \\"Phone Number\\": \\"[Extracted Phone Number]\\", \\"Email Address\\": \\"[Extracted Email Address]\\", \\"Languages Spoken\\": \\"[Extracted Languages]\\"}, \\"Basic Case Details\\": {\\"Case Type\\": \\"[Infer the Case Type]\\", \\"Date of Incident\\": \\"[Extracted Date]\\", \\"Location of Incident\\": \\"[Extracted Location]\\"}, \\"Detailed Incident Description\\": \\"[Extracted Detailed Description]\\", \\"Injuries or Damages\\": {\\"Description\\": \\"[Extracted Description of Injuries]\\", \\"Damages\\": [\\"[Extracted Damage 1]\\", \\"[Extracted Damage 2]\\", \\"...\\"]}, \\"Evidence\\": \\"[Extracted Details on Available Evidence]\\", \\"Preferred Outcome\\": \\"[Extracted or Inferred Desired Outcome]\\"}. 
+                content: `Given the provided narrative of a client's incident, please structure the information into the following format, but make sure your response is in a stringified json with an attribute "case" for everything below and an attribute "missing" information for any of the fields the client did not provide. Here is the properties for case.  
+                 
+                           {
+                "contactInformation": {
+                    "fullName": "[Extracted Full Name]",
+                    "phoneNumber": "[Extracted Phone Number]",
+                    "emailAddress": "[Extracted Email Address]",
+                    "languagesSpoken": "[Extracted Languages]"
+                },
+                "basicCaseDetails": {
+                    "caseType": "[Infer the Case Type]",
+                    "dateOfIncident": "[Extracted Date]",
+                    "locationOfIncident": "[Extracted Location]"
+                },
+                "detailedIncidentDescription": "[Extracted Detailed Description Summarized for better understanding]",
+                "injuriesOrDamages": {
+                    "description": "[Extracted Description of Injuries]",
+                    "damages": ["[Extracted Damage 1]", "[Extracted Damage 2]", "..."]
+                },
+                "evidence": "[Extracted Details on Available Evidence]",
+                "preferredOutcome": "[Extracted or Inferred Desired Outcome]"
+            }
                 
-                If any portion of the narrative is not in English, please translate it. Ensure the information is as accurate and comprehensive as possible based on the provided narrative. If any field or information is missing, simply put "Not provided by client". This is the description from the client: ${transcript.text}`
+                If any portion of the narrative is not in English, please translate it. Ensure the information is as accurate and comprehensive as possible based on the provided narrative. If any field or information is missing, do not add that field to "case" instead add the field to the "missing" attribute. The missing attribute should be an array of strings of what's missing. 
+                
+                This is the description from the client: ${transcript.text} REMEMBER YOUR RESPONSE IS IN A STRINGIFIED JSON, DO NOT RESPOND IN ANY OTHER FORMAT!`
             }]
         })
+
         console.log(completion.choices[0].message);
-        console.log(JSON.parse(completion.choices[0].message));
+
+
+        const parsedData = JSON.parse(JSON.parse(completion.choices[0].message.content));
+        console.log(parsedData)
         console.log(transcript);
         res.set('Content-Type', 'text/plain');
-        res.json({transcription: completion.choices[0].message.content});
+        res.json(parsedData);
         // Clean up: Close and remove the temporary file
         await tmpFile.cleanup();
 

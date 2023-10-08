@@ -35,7 +35,8 @@ function VoiceRecorder() {
                     body: formData
                 }).then(response => response.json())
                      .then(data => {
-                         console.log(data.transcription);
+                         console.log(data);
+                         console.log(data.missing);
                          setAudioUrl(data.transcription);
                      })
                      .catch(error => {
