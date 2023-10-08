@@ -1,10 +1,17 @@
 .client {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow: hidden;
   margin: 0 auto;
   margin-top: 1rem;
 
 }
+
+.intro-container {
+  text-align: center;
+}
+
 .intro {
   display: inline-block;
   font-size: 1.8rem;
@@ -117,7 +124,13 @@
   width: 5rem;
   position: absolute;
   top: 40rem;
-  right: 21rem;
+  left: 15rem;
+}
+
+.left-half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .insideBox {
@@ -127,7 +140,7 @@
   display: inline-block;
   position: absolute;
   top: 10rem;
-  left: 53rem;
+  left: 5rem;
 }
 
 .leftTopImage:active {
@@ -137,7 +150,17 @@
 
 p {
   position: absolute;
-  top: 8rem;
-  left: 53rem;
-  margin-right: 110px;
+  top: 10rem;
+  left: 5rem;
 }
+
+h2 {
+  position: absolute;
+  top: 10rem;
+  right: 5rem;
+}
+ ul {
+  position: absolute;
+  top: 13rem;
+  font-size: large;
+ }

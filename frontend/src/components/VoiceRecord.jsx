@@ -7,10 +7,10 @@ import stopRec from '../assets/stopRec.svg';
 
 function VoiceRecorder() {
     const [recording, setRecording] = useState(false);
-    const [audioUrl, setAudioUrl] = useState(null);
+    const [transcript, setTranscript] = useState(null);
     const mediaRecorderRef = useRef(null);
     const audioChunksRef = useRef([]);
-    const [transcript, setTranscript] = useState()
+    const [caseInfo, setCaseInfo] = useState(null)
 
     const startRecording = async () => {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -35,8 +35,9 @@ function VoiceRecorder() {
                     body: formData
                 }).then(response => response.json())
                      .then(data => {
-                         console.log(data.transcription);
-                         setAudioUrl(data.transcription);
+                         console.log(data.original);
+                         setTranscript(data.original);
+                         setCaseInfo(date.transcript)
                      })
                      .catch(error => {
                          console.error('Error:', error);
@@ -62,8 +63,20 @@ function VoiceRecorder() {
             {recording ? <img src={stopRec} alt="voice-mic" className="leftTopImage"  onClick={() => stopRecording()} disabled={!recording}></img> : 
             <img src={voice} alt="voice-mic" className="leftTopImage"  onClick={() => startRecording()} disabled={!recording}/>}
             <div className="voice-container">
-                {audioUrl ? <p>{audioUrl}</p> : <p>Click the Mic Button to Start Recording</p>}
+                {transcript ? <p>{transcript}</p> : <p>Click the Mic Button to Start Recording</p>}
                 <div className="insideBox"></div>
+            </div>
+            <div class="right-half">
+                <h2 className="checklist">Please include the following information in your case description: </h2>
+                <ul>
+                    <li>First Name</li>
+                    <li>Last Name</li>
+                    <li>Phone Number</li>
+                    <li>Zip Code</li>
+                    <li>Email Address</li>
+                    <li>Case Type</li>
+                    <li>Case Description</li>
+                </ul>
             </div>
         </div>
     );
