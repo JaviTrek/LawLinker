@@ -11,9 +11,11 @@ import React from 'react';
 
 function FrontPage() {
 
+
     useEffect(() => {
         const pingServer = async () => {
             try {
+                axios.get("http://localhost:4000/mongo/attorney").then(data =>  console.log(data))
                 const response = await axios.post('http://localhost:4000/mongo/newCase'); // adjust the URL if needed, e.g., 'http://localhost:4000/newCase'
                 console.log('Response from server:', response.data);
             } catch (error) {
@@ -57,7 +59,7 @@ function FrontPage() {
         <button className="landingButton">Client</button>
       </a>
 
-      <a href="/client">
+      <a href="/attorney">
         <button className="landingButtonAtt">Attorney</button>
       </a>
     </div>
