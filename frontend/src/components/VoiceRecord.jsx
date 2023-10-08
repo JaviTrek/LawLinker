@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import PulseLoader from "react-spinners/PulseLoader";
 import '../css/Client.css';
 
 import voice from '../assets/voice.svg';
@@ -7,6 +6,7 @@ import stopRec from '../assets/stopRec.svg';
 
 function VoiceRecorder() {
   const [recording, setRecording] = useState(false);
+  const [haveRecorded, setHaveRecorded] = useState(false);
   const [transcript, setTranscript] = useState(null);
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
@@ -49,12 +49,14 @@ function VoiceRecorder() {
     };
 
     mediaRecorderRef.current.start();
+    setHaveRecorded(false);
     setRecording(true);
   };
 
   const stopRecording = () => {
     if (mediaRecorderRef.current) {
       mediaRecorderRef.current.stop();
+      setHaveRecorded(true);
       setRecording(false);
     }
   };
@@ -71,15 +73,7 @@ function VoiceRecorder() {
               onClick={() => stopRecording()}
               disabled={!recording}
             ></img>
-            <p className='loading-animation'>
-                  <PulseLoader
-                    color='white'
-                    size={20}
-                    speedMultiplier='0.4'
-                    margin={10}
-                    aria-label="Loading Spinner"
-                  />
-              </p>
+            <p className='loading-animation'>Listening...</p>
             </>
         ) : (
           <img
@@ -90,6 +84,7 @@ function VoiceRecorder() {
             disabled={!recording}
           />
         )}
+        {haveRecorded && !transcript ? <p className='loading-animation'>Converting to text...</p> : <p></p>}
         <div className="voice-container">
           {transcript ? (
             <p className="outText">{transcript}</p>
