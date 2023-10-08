@@ -203,7 +203,7 @@ li {
 
 .outText {
   position: absolute;
-  width: 28rem;
+
   padding: 1rem;
   top: 20rem;
   left: 10rem;
@@ -213,7 +213,8 @@ li {
   font-size: 1.3rem;
   color: white;
 
-  font-weight: 100;
+  word-wrap: break-word;
+  width: 400px;
 }
 
 .loading-animation {
