@@ -138,13 +138,17 @@ function VoiceRecorder() {
           Ensure your case description<br></br> includes the following details
         </h2>
         <ul>
-          <li># First Name</li>
+        {caseInfo.map((item, index) => (
+                            <li className="listItem" key={index}>{item}</li>
+                        ))}
+          {/* <li># First Name</li>
           <li># Last Name</li>
           <li># Phone Number</li>
           <li># Zip Code</li>
           <li># Email Address</li>
           <li># Case Type</li>
-          <li># Case Description</li>
+          
+          <li># Case Description</li> */}
         </ul>
       </div>
     </div>
