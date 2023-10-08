@@ -6,14 +6,10 @@ const router = express.Router();
 router.post("/newCase", async (req, res) => {
     const database = db.getDatabase()
     // db and collection code goes here
-    const coll = database.collection("cases");
+    const coll = database.collection("attorney");
     // insert code goes here
-    const docs = {
-        name: "Javi",
-        caseType: "Civil Court",
-        languageSpoken: ["spanish", "french"],
-        caseSummary: "was attacked by cat, want to sue neighbor for being angry"
-    };const result = await coll.insertOne(docs);
+    const docs = req.body.data;
+    const result = await coll.insertOne(docs);
     console.log(result);
     console.log("Victory has been achieved!")
 });

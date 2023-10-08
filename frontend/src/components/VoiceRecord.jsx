@@ -3,6 +3,8 @@ import '../css/Client.css';
 
 import voice from '../assets/voice.svg';
 import stopRec from '../assets/stopRec.svg';
+import axios from "axios";
+
 
 
 function VoiceRecorder() {
@@ -10,7 +12,10 @@ function VoiceRecorder() {
     const [transcript, setTranscript] = useState(null);
     const mediaRecorderRef = useRef(null);
     const audioChunksRef = useRef([]);
-    const [caseInfo, setCaseInfo] = useState(null)
+    const [caseInfo, setCaseInfo] = useState(["Full Name", "Phone Number", "Email Address", "Languages Spoken", "Case Type", "Date Of Incident", "Location Of Incident", "Detailed Incident Description"]
+    )
+    const [missingStuff, setMissingStuff] = useState(false);
+    const [caseObject, setCaseObject] = useState(null);
 
     const startRecording = async () => {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -29,21 +34,56 @@ function VoiceRecorder() {
             const formData = new FormData();
             formData.append('audio', audioBlob);
 
-            try {
-                 await fetch('http://localhost:4000/transcribe', {
-                    method: 'POST',
-                    body: formData
-                }).then(response => response.json())
-                     .then(data => {
-                         console.log(data.original);
-                         setTranscript(data.original);
-                         setCaseInfo(date.transcript)
-                     })
-                     .catch(error => {
-                         console.error('Error:', error);
-                     });
-            } catch (error) {
-                console.error("Error transcribing:", error.message);
+            if (missingStuff) {
+                formData.append("transcript", transcript);
+                formData.append("missing", caseInfo);
+                try {
+                    await fetch('http://localhost:4000/addMissing', {
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.json())
+                        .then(async (data) => {
+                            console.log(data);
+                            setTranscript(transcript + " " + data.original.text);
+
+                            if (data.transcript.missing.length === 0)  {
+                                console.log("submit!!!");
+
+                                const response = await axios.post('http://localhost:4000/mongo/newCase', { data: data.transcript.case}); // adjust the URL if needed, e.g., 'http://localhost:4000/newCase'
+                                console.log('Response from server:', response.data);
+
+
+                            }
+                            setCaseInfo(data.transcript.missing)
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                } catch (error) {
+                    console.error("Error transcribing:", error.message);
+                }
+            } else {
+
+
+                setMissingStuff(true);
+
+                try {
+                    await fetch('http://localhost:4000/transcribe', {
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            setTranscript(data.original.text);
+                            setCaseObject(data.transcript)
+                            setCaseInfo(data.transcript.missing)
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                } catch (error) {
+                    console.error("Error transcribing:", error.message);
+                }
             }
         };
 
@@ -66,16 +106,12 @@ function VoiceRecorder() {
                 {transcript ? <p>{transcript}</p> : <p>Click the Mic Button to Start Recording</p>}
                 <div className="insideBox"></div>
             </div>
-            <div class="right-half">
+            <div className="right-half">
                 <h2 className="checklist">Please include the following information in your case description: </h2>
                 <ul>
-                    <li>First Name</li>
-                    <li>Last Name</li>
-                    <li>Phone Number</li>
-                    <li>Zip Code</li>
-                    <li>Email Address</li>
-                    <li>Case Type</li>
-                    <li>Case Description</li>
+                        {caseInfo.map((item, index) => (
+                            <li className="listItem" key={index}>{item}</li>
+                        ))}
                 </ul>
             </div>
         </div>

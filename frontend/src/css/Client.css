@@ -164,3 +164,7 @@ h2 {
   top: 13rem;
   font-size: large;
  }
+
+ .listItem {
+   padding: 0.5em;
+ }
