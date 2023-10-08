@@ -44,16 +44,15 @@ function VoiceRecorder() {
                         .then(async (data) => {
                             console.log(data);
                             setTranscript(transcript + " " + data.original.text);
-
+                            setCaseInfo(data.transcript.missing)
                             if (data.transcript.missing.length === 0)  {
                                 console.log("submit!!!");
 
+                                setCaseInfo(["Your form is completed and submitted!"])
                                 const response = await axios.post('http://localhost:4000/mongo/newCase', { data: data.transcript.case}); // adjust the URL if needed, e.g., 'http://localhost:4000/newCase'
                                 console.log('Response from server:', response.data);
-
-
                             }
-                            setCaseInfo(data.transcript.missing)
+
                         })
                         .catch(error => {
                             console.error('Error:', error);
@@ -71,11 +70,19 @@ function VoiceRecorder() {
                         method: 'POST',
                         body: formData
                     }).then(response => response.json())
-                        .then(data => {
+                        .then(async (data) => {
                             console.log(data);
                             setTranscript(data.original.text);
                             setCaseObject(data.transcript)
                             setCaseInfo(data.transcript.missing)
+
+                            if (data.transcript.missing.length === 0)  {
+                                console.log("submit!!!");
+
+                                setCaseInfo(["Your form is completed and submitted!"])
+                                const response = await axios.post('http://localhost:4000/mongo/newCase', { data: data.transcript.case}); // adjust the URL if needed, e.g., 'http://localhost:4000/newCase'
+                                console.log('Response from server:', response.data);
+                            }
                         })
                         .catch(error => {
                             console.error('Error:', error);

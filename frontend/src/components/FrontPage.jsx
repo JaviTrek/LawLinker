@@ -7,20 +7,23 @@ import leftImage from '../assets/leftImge2.svg';
 
 import React from 'react';
 
-function FrontPage() {
-  useEffect(() => {
-    const pingServer = async () => {
-      try {
-        axios
-          .get('http://localhost:4000/mongo/attorney')
-          .then((data) => console.log(data));
-      } catch (error) {
-        console.error('Error pinging server:', error);
-      }
-    };
 
-    pingServer();
-  }, []); // Empty dependency array means this useEffect will run once when the component mounts
+
+function FrontPage() {
+
+
+    useEffect(() => {
+        const pingServer = async () => {
+            try {
+                axios.get("http://localhost:4000/mongo/attorney").then(data =>  console.log(data))
+            } catch (error) {
+                console.error('Error pinging server:', error);
+            }
+        };
+
+        pingServer();
+    }, []);  // Empty dependency array means this useEffect will run once when the component mounts
+
 
   return (
     <div className="landingContainer">

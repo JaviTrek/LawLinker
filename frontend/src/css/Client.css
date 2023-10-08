@@ -130,7 +130,7 @@
 }
 
 .insideBox {
-  width: 28rem;
+  width: 30vw;
   height: 28rem;
   border-bottom: 1px solid rgb(218, 78, 78);
   border-radius: 2rem;
@@ -139,6 +139,8 @@
   top: 10rem;
   left: 10rem;
 }
+
+
 
 .leftTopImage:active {
   cursor: pointer;
