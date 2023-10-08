@@ -62,11 +62,14 @@ app.post('/transcribe', upload.single('audio'), async (req, res) => {
                 If any portion of the narrative is not in English, please translate it. Ensure the information is as accurate and comprehensive as possible based on the provided narrative. If any field or information is missing, simply put "Not provided by client". This is the description from the client: ${transcript.text}`
             }]
         })
-
-        console.log(completion.choices[0].message)
+        console.log("this is the transcript from your voice");
         console.log(transcript);
+
+        console.log("message from chatgpt");
+        console.log(completion.choices[0].message)
+        
         res.set('Content-Type', 'text/plain');
-        res.json({transcription: completion.choices[0].message.content});
+        res.json({original: transcript.text, transcription: completion.choices[0].message.content});
         // Clean up: Close and remove the temporary file
         await tmpFile.cleanup();
 
