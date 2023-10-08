@@ -1,4 +1,9 @@
 import React, { useState, useRef } from "react";
+import '../css/Client.css';
+
+import voice from '../assets/voice.svg';
+import stopRec from '../assets/stopRec.svg';
+
 
 function VoiceRecorder() {
     const [recording, setRecording] = useState(false);
@@ -53,12 +58,13 @@ function VoiceRecorder() {
     };
 
     return (
-        <div>
-            <button className="submitButton" onClick={startRecording} disabled={recording}>Start Recording</button>
-            <button className="submitButton" onClick={stopRecording} disabled={!recording}>Stop Recording</button>
-            <h2>Your response</h2>
-            {audioUrl ? <p>{audioUrl}</p> : <p>Waiting for response from GPT</p>}
-
+        <div> 
+            {recording ? <img src={stopRec} alt="voice-mic" className="leftTopImage"  onClick={() => stopRecording()} disabled={!recording}></img> : 
+            <img src={voice} alt="voice-mic" className="leftTopImage"  onClick={() => startRecording()} disabled={!recording}/>}
+            <div className="voice-container">
+                {audioUrl ? <p>{audioUrl}</p> : <p>Click the Mic Button to Start Recording</p>}
+                <div className="insideBox"></div>
+            </div>
         </div>
     );
 }
