@@ -48,7 +48,7 @@ function FrontPage() {
         <img src={leftImage} alt=" -image" className="leftImage" />
       </div>
 
-      <span className="qtext">Are you Client or Attoreny?</span>
+      <span className="qtext">Are you a Client or an Attorney?</span>
 
       <a href="/client">
         <button className="landingButton">Client</button>
