@@ -2,34 +2,23 @@ import React, { useState } from 'react';
 import '../css/Attorney.css';
 import doneImg from '../assets/done.svg';
 
-const SingleCard = () => {
-  const caseFake2 = {
-    caseName: '',
-    clientFname: '',
-    clientLname: '',
-    clientPhoneNumber: '',
-    clientZipCode: '',
-    clientEmail: '',
-    caseType: '',
-    caseDescription: '',
-    dateCreated: '',
-  };
+const SingleCard = ({ value }) => {
+  const {
+    caseName,
+    clientFname,
+    clientLname,
+    clientPhoneNumber,
+    clientZipCode,
+    clientEmail,
+    caseType,
+    caseDescription,
+    dateCreated,
+  } = value;
 
-  const caseFake = {
-    caseName: 'Car Accsident case',
-    clientFname: 'Abdullah',
-    clientLname: 'Al Hinaey',
-    clientPhoneNumber: '4079558206',
-    clientZipCode: '32927',
-    clientEmail: 'axs@gmail.com',
-    caseType: 'Car Accsident',
-    caseDescription:
-      'Depending on the circumstances and the severity of the accident, you may want to consult with an attorney,',
-    dateCreated: '22/2/2023',
-  };
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleAccordion = () => {
+    console.log(value);
     setIsCollapsed(!isCollapsed);
   };
 
@@ -37,24 +26,24 @@ const SingleCard = () => {
     <div className={`card ${isCollapsed ? 'is-collapsed' : 'is-expanded'}`}>
       <div className="ch-row">
         <div className="ch-col1">
-          <div className="caseName">{caseFake.caseName}</div>
+          <div className="caseName">{caseName}</div>
           <lebal className="berforOut">Case Type: </lebal>
-          <span className="caseType">{caseFake.caseType}</span>
+          <span className="caseType">{caseType}</span>
         </div>
         <div className="Name">
           <lebal className="berforOut"> First Name:</lebal>
           <span className="first">
-            {caseFake.clientFname}
+            {clientFname}
             <br></br>
           </span>
           <lebal className="berforOut">Last Name: </lebal>
           <span className="last">
             {''}
-            {caseFake.clientLname}
+            {clientLname}
           </span>
         </div>
         <lebal className="berforOut">Date Created: </lebal>
-        <span className="Date">{caseFake.dateCreated}</span>
+        <span className="Date">{dateCreated}</span>
       </div>
 
       <div className="row1 more-fields">
@@ -84,17 +73,17 @@ const SingleCard = () => {
 
                   <span className="textDesc">
                     <br></br>
-                    {caseFake.caseDescription}
+                    {caseDescription}
                   </span>
                 </div>
                 <div className="clientConnect">
                   <lebal className="berforOut">Phone Number: </lebal>
                   <span className="phone">
-                    {caseFake.clientPhoneNumber}
+                    {clientPhoneNumber}
                     <br></br>
                   </span>
                   <lebal className="berforOut">Email Address: </lebal>
-                  <span className="email">{caseFake.clientEmail}</span>
+                  <span className="email">{clientEmail}</span>
                 </div>
               </div>
             </dd>

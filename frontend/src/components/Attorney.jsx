@@ -6,43 +6,83 @@ import Input from './Input.jsx';
 import Output from './Output.jsx';
 import { useForm } from 'react-hook-form';
 import SingleCard from './SingleCard';
-
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
-import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
-import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import { useState } from 'react';
 
 export default function Attorney() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      zipCode: '',
-      emailAddress: '',
-      caseType: '',
-      caseDescription: '',
-    },
-  });
+  const [filter, setFilter] = useState('');
 
-  const submitNewCase = (formValues) => {
-    console.log(formValues);
+  const casesData = [
+    {
+      caseName: 'Car Accsident case',
+      clientFname: 'Abdullah',
+      clientLname: 'Al Hinaey',
+      clientPhoneNumber: '4079558206',
+      clientZipCode: '32927',
+      clientEmail: 'axs@gmail.com',
+      caseType: 'Car Accsident',
+      caseDescription:
+        'Depending on the circumstances and the severity of the accident, you may want to consult with an attorney,',
+      dateCreated: '22/2/2023',
+      // Other case data...
+    },
+    {
+      caseName: 'Car Accsident case',
+      clientFname: 'me',
+      clientLname: 'Al Hinaey',
+      clientPhoneNumber: '4079558206',
+      clientZipCode: '32927',
+      clientEmail: 'axs@gmail.com',
+      caseType: 'Car Accsident',
+      caseDescription:
+        'Depending on the circumstances and the severity of the accident, you may want to consult with an attorney,',
+      dateCreated: '22/2/2023',
+    },
+
+    {
+      caseName: 'car Accsident case',
+      clientFname: 'bro',
+      clientLname: 'Al Hinaey',
+      clientPhoneNumber: '4079558206',
+      clientZipCode: '32927',
+      clientEmail: 'axs@gmail.com',
+      caseType: 'killing Accsident',
+      caseDescription:
+        'Depending on the circumstances and the severity of the accident, you may want to consult with an attorney,',
+      dateCreated: '22/2/2023',
+      // Other case data...
+    },
+  ];
+
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
   };
+
+  const filteredCases = casesData.filter(
+    (caseItem) => caseItem.caseType.toLowerCase().includes(filter.toLowerCase()) // Case-insensitive filter
+  );
+
   return (
-    <div className="parent">
-      <p className="casesIntro">Current Cases</p>
-      <SingleCard></SingleCard>
-      <SingleCard></SingleCard>
-      <SingleCard></SingleCard>
-      <SingleCard></SingleCard>
-      <SingleCard></SingleCard>
-    </div>
+    <>
+      <input
+        type="text"
+        placeholder="Filter by Case Type"
+        value={filter}
+        onChange={handleFilterChange}
+        style={{
+          flex: '2',
+          backgroundColor: 'white',
+        }}
+      />
+      <div className="parent">
+        <p className="casesIntro">Current Cases</p>
+
+        {/* Filter input */}
+
+        {/* Render filtered cards */}
+        {filteredCases.map((caseItem, index) => (
+          <SingleCard key={index} value={caseItem} />
+        ))}
+      </div>
+    </>
   );
 }
