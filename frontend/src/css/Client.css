@@ -205,13 +205,14 @@ li {
   position: absolute;
   width: 28rem;
   padding: 1rem;
-  top: 20rem;
+  top: 16rem;
   left: 10rem;
   z-index: 3px;
   text-align: left;
 
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: white;
+  height: auto;
 
   font-weight: 100;
 }
