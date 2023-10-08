@@ -41,7 +41,7 @@ function FrontPage() {
         <button className="landingButton">Client</button>
       </a>
 
-      <a href="/client">
+      <a href="/attorney">
         <button className="landingButtonAtt">Attorney</button>
       </a>
     </div>

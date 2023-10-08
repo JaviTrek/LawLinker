@@ -1,5 +1,3 @@
-import '../css/FrontPage.css';
-
 //VERY IMPORTANT TO IMPORT STYLING!
 import '../css/Interface.css';
 import Form from './Form';
