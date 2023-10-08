@@ -1,0 +1,134 @@
+.card {
+  padding: 20px;
+  margin: 20px;
+  background-color: #ffffffec;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  /* Set flex display for horizontal layout */
+  flex-direction: row-reverse; /* Default to column layout */
+  width: 25rem;
+  margin-top: 1rem;
+  padding: 2rem;
+  display: block;
+  margin: 2rem;
+  position: relative;
+}
+
+/* Style for the card title */
+.caseName {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: rgb(59, 59, 59);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.berforOut {
+  color: black;
+  font-weight: 300;
+  font-size: 23px;
+  padding: 4px;
+  margin-bottom: 1rem;
+  line-height: 2.5rem;
+}
+
+.caption {
+  font-weight: bold;
+}
+
+/* Style for the accordion toggle button */
+.accordionTitle {
+  cursor: pointer;
+  color: black;
+  font-weight: 100;
+  margin: 10px 0;
+  text-decoration: none;
+  align-self: flex-start; /* Align to the left */
+}
+.accordionTitle:hover {
+  font-weight: 300;
+  color: red;
+}
+
+/* Style for the accordion content */
+.accordion-content {
+  padding: 10px;
+  background-color: #c7c7c635;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  display: none; /* Initially hidden */
+  flex-direction: row; /* Horizontal layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center vertically */
+}
+
+/* Style for the expanded accordion content */
+.accordionItem:not(.is-collapsed) {
+  display: flex; /* Display when expanded */
+}
+
+/* .is-collapsed {
+} */
+
+/* Style for the expanded state */
+.is-expanded {
+  display: block;
+}
+
+/* Additional styling for other elements as needed */
+
+span,
+.caseType {
+  color: rgb(80, 79, 79);
+  font-size: 21px;
+  font-weight: 300;
+}
+
+.ch-row {
+  margin-bottom: 2rem;
+}
+
+.textDesc {
+  line-height: 2rem;
+}
+
+.email,
+.phone {
+  line-height: 3rem;
+}
+.parent {
+  position: absolute;
+
+  right: -6rem;
+  top: -2rem;
+
+  justify-content: center;
+  text-align: center;
+
+  width: 600px;
+  height: calc(104vh);
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+}
+.casesIntro {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 100;
+
+  width: 25rem;
+  padding: 2rem;
+  margin: 2rem;
+  margin-bottom: -2.5rem !important;
+}
+.doneImg {
+  position: absolute;
+  width: 1.5rem;
+  top: 1rem;
+  right: 1rem;
+}
+
+.doneImg:hover {
+  width: 2rem;
+}
