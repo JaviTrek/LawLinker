@@ -22,6 +22,7 @@
     "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-router-dom": "^6.16.0",
     "react-speech-recognition": "^3.10.0",
+    "react-spinners": "^0.13.8",
     "regenerator-runtime": "^0.14.0"
   },
   "devDependencies": {

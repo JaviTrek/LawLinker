@@ -1,12 +1,14 @@
 # LawAssistant
-Hopeful winners for the morgan and morgan challenge
+Contestants for the Morgan & Morgan Challenge
 
 # How to start app???
-Run these in the terminal!
+Run the following commands in the terminal:
 ```
-cd frontend //done so we can change to the frontend folder
+cd frontend 
+npm i OR npm install 
 
-npm i OR npm install //to install our dependencies
+cd backend
+npm i OR npm install
 
-npm run dev //to run our app in localhost:3000
+npm run dev 
 ```

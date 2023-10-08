@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import '../css/FrontPage.css';
-import axios from "axios"
+import axios from 'axios';
 import logo from '../assets/logo10.png';
 
 import leftImage from '../assets/leftImge2.svg';
@@ -51,7 +51,7 @@ function FrontPage() {
         <img src={leftImage} alt=" -image" className="leftImage" />
       </div>
 
-      <span className="qtext">Are you Client or Attoreny?</span>
+      <span className="qtext">Are you a Client or an Attorney?</span>
 
       <a href="/client">
         <button className="landingButton">Client</button>
