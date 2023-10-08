@@ -5,21 +5,17 @@
   overflow: hidden;
   margin: 0 auto;
   margin-top: 1rem;
-
-}
-
-.intro-container {
-  text-align: center;
 }
 
 .intro {
   display: inline-block;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 300;
-  color: #b5b4b4;
+  color: #ffffff;
   line-height: 2.3rem;
-  margin-left: 5rem;
+  margin-left: -36rem;
   margin-top: 2rem;
+  text-align: left;
 }
 
 .form-container {
@@ -123,8 +119,8 @@
   max-height: 14rem;
   width: 5rem;
   position: absolute;
-  top: 40rem;
-  left: 15rem;
+  top: 39rem;
+  left: 21rem;
 }
 
 .left-half {
@@ -136,31 +132,86 @@
 .insideBox {
   width: 28rem;
   height: 28rem;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgb(218, 78, 78);
+  border-radius: 2rem;
   display: inline-block;
   position: absolute;
   top: 10rem;
-  left: 5rem;
+  left: 10rem;
 }
 
 .leftTopImage:active {
   cursor: pointer;
-  border-bottom: 1px solid red;
 }
 
 p {
   position: absolute;
-  top: 10rem;
-  left: 5rem;
-}
+  top: 46rem;
+  left: 14rem;
+  font-size: 1.3rem;
+  color: white;
+  letter-spacing: 1px;
 
+  font-weight: 100;
+}
+.mic {
+  position: absolute;
+  top: 46rem;
+  left: 14rem;
+  font-size: 1.3rem;
+  color: white;
+  letter-spacing: 1px;
+
+  font-weight: 100;
+}
 h2 {
   position: absolute;
-  top: 10rem;
-  right: 5rem;
+  top: 25rem;
+  right: 10rem;
+  font-size: 1.6rem;
+  color: white;
+  letter-spacing: 1px;
+  font-weight: 300;
+  line-height: 2.5rem;
 }
- ul {
+ul {
+  position: absolute;
+  top: 30rem;
+  left: 57rem;
+  font-size: 1.5rem;
+  justify-content: center;
+  font-weight: 100;
+  color: #b5b4b4;
+}
+li {
+  display: inline-block;
+  margin: 1rem;
+}
+.tempC {
+  color: #fceb09;
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.voiceAi {
+  width: 15rem;
+  object-fit: contain;
   position: absolute;
   top: 13rem;
-  font-size: large;
- }
+  right: 15rem;
+}
+
+.outText {
+  position: absolute;
+  width: 20rem;
+  padding: 1rem;
+  top: 20rem;
+  left: 10rem;
+  z-index: 3px;
+  text-align: left;
+
+  font-size: 1.3rem;
+  color: white;
+
+  font-weight: 100;
+}
