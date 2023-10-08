@@ -56,7 +56,10 @@ app.post('/transcribe', upload.single('audio'), async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4", messages: [{
                 role: "user",
-                content: `Translate this to english, try staying as true to the meaning  only respond with the translation, nothing else.: ${transcript.text}`
+                content: `Given the provided narrative of a client's incident, please structure the information into the following format (a JSON object): 
+                {\\"Contact Information\\": {\\"Full Name\\": \\"[Extracted Full Name]\\", \\"Phone Number\\": \\"[Extracted Phone Number]\\", \\"Email Address\\": \\"[Extracted Email Address]\\", \\"Languages Spoken\\": \\"[Extracted Languages]\\"}, \\"Basic Case Details\\": {\\"Case Type\\": \\"[Infer the Case Type]\\", \\"Date of Incident\\": \\"[Extracted Date]\\", \\"Location of Incident\\": \\"[Extracted Location]\\"}, \\"Detailed Incident Description\\": \\"[Extracted Detailed Description]\\", \\"Injuries or Damages\\": {\\"Description\\": \\"[Extracted Description of Injuries]\\", \\"Damages\\": [\\"[Extracted Damage 1]\\", \\"[Extracted Damage 2]\\", \\"...\\"]}, \\"Evidence\\": \\"[Extracted Details on Available Evidence]\\", \\"Preferred Outcome\\": \\"[Extracted or Inferred Desired Outcome]\\"}. 
+                
+                If any portion of the narrative is not in English, please translate it. Ensure the information is as accurate and comprehensive as possible based on the provided narrative. If any field or information is missing, simply put "Not provided by client". This is the description from the client: ${transcript.text}`
             }]
         })
 
