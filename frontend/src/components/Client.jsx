@@ -1,7 +1,6 @@
 import '../css/FrontPage.css';
 import '../css/Client.css';
 import '../css/Interface.css';
-
 import Form from './Form';
 import { useForm } from 'react-hook-form';
 import VoiceRecord from './VoiceRecord.jsx';
@@ -27,7 +26,7 @@ export default function Client() {
       <img src={aiVoice} alt="" className="voiceAi" />
       <div className="intro-container">
         <h1 className="intro">
-          Skip the hassle of typing{' '}
+          Skip the hassle of typing, {' '}
           <span className="tempC"> LawLinker's AI</span> <br></br>effortlessly
           transcribes your spoken responses
         </h1>
