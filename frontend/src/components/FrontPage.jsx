@@ -45,7 +45,7 @@ function FrontPage() {
 
       <span className="descLanding"></span>
       <div className="imgContainer">
-        <img src={leftImage} alt=" -image" className="searchImage" />
+        <img src={leftImage} alt=" -image" className="leftImage" />
       </div>
 
       <span className="qtext">Are you Client or Attoreny?</span>

@@ -41,17 +41,17 @@ export default function Attorney() {
 
   return (
     <>
-      <div className="textContainer">
-        <span className="desc">
+      <div className="textContainerAtt">
+        <span className="descAtt">
           {' '}
           <br />
           Get to know your assigned cases that <br></br>have been filtered and
           organized by our
-          <span className="temp"> Assistant AI</span>
+          <span className="tempAtt"> Assistant AI</span>
         </span>
       </div>
-      <div className="imgContainer">
-        <img src={searchImg} alt=" -image" className="searchImage" />
+      <div className="imgContainerAtt">
+        <img src={searchImg} alt=" -image" className="searchImageAtt" />
       </div>
       <input
         className="input-form"

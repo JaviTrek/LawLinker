@@ -161,7 +161,7 @@ span,
   outline: 0.5px solid #fceb09;
 }
 
-.searchImage {
+.searchImageAtt {
   position: absolute;
   z-index: -1;
   top: 20rem;
@@ -171,13 +171,13 @@ span,
   width: 55vw;
 }
 
-.temp {
+.tempAtt {
   color: #fceb09;
   font-weight: 300;
   font-size: 2rem;
 }
 
-.desc {
+.descAtt {
   display: inline-block;
   font-size: 1.8rem;
   font-weight: 100;
@@ -186,7 +186,7 @@ span,
   margin-top: -1.5rem;
 }
 
-.textContainer {
+.textContainerAtt {
   margin-top: 9rem;
   height: 60%;
   width: 50%;

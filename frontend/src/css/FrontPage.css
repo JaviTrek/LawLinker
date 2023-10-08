@@ -1,3 +1,151 @@
+/* .landingContainer {
+  align-items: center;
+  height: calc(100vh - 4rem);
+  width: 100vw;
+  max-width: 75rem;
+  overflow: hidden;
+  position: fixed;
+  margin: 0 8rem;
+}
+ 
+
+
+.logoLand {
+  margin-top: 1rem;
+  object-fit: fill;
+  max-height: 14rem;
+  width: 16rem;
+  position: relative;
+  margin-left: -1.5rem;
+}
+
+.landingTitle-brand {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: #fceb09;
+  letter-spacing: 1px;
+}
+.landingTitle-title {
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin-bottom: 0.3rem;
+}
+
+.textContainer {
+  margin-top: 4rem;
+  height: 60%;
+  width: 50%;
+}
+
+.desc {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #727272;
+  line-height: 2.3rem;
+  margin-top: -1.5rem;
+}
+
+.leftImage {
+  position: absolute;
+  z-index: -1;
+  top: 19rem;
+  right: -9rem;
+  object-fit: contain;
+  height: 40vh;
+  width: 55vw;
+}
+
+.conatactUs {
+  position: absolute;
+  top: 3rem;
+  right: 9rem;
+  background-color: transparent;
+  color: white;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4rem;
+  padding: 0.8rem 1.3rem;
+  display: flex;
+  font-size: 1rem;
+  border: #fceb09 solid 1px;
+
+  font-weight: 300;
+}
+
+.conatactUs:hover {
+  background-color: #e7e397;
+  color: rgb(0, 0, 0);
+}
+.conatactUs:active {
+  transform: scale(0.95);
+  transition: 10ms;
+}
+
+.temp {
+  color: #fceb09;
+  font-weight: 600;
+}
+
+.landingButtonAtt {
+  background-color: transparent;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  padding: 0.8rem 3rem;
+
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 300;
+  margin-left: 2rem;
+  border: #fceb09 solid 1px;
+}
+
+.landingButtonAtt:hover {
+  background-color: #e7e397;
+  color: rgb(0, 0, 0);
+}
+
+.landingButtonAtt:active {
+  transform: scale(0.95);
+  transition: 10ms;
+}
+
+.landingButton {
+  background-color: #fceb09;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  padding: 0.8rem 3rem;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 300;
+}
+
+.landingButton:hover {
+  background-color: #e7e397;
+}
+
+.landingButton:active {
+  transform: scale(0.95);
+  transition: 10ms;
+}
+
+.qtext {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #ffffff;
+  margin-top: -4rem;
+  margin-bottom: 2rem;
+} */
+
 .landingContainer {
   align-items: center;
   height: calc(100vh - 4rem);
@@ -142,4 +290,13 @@
   color: #ffffff;
   margin-top: -4rem;
   margin-bottom: 2rem;
+}
+.searchImage{
+  position: absolute;
+  z-index: -1;
+  top: 20rem;
+  left: 0rem;
+  object-fit: contain;
+  height: 40vh;
+  width: 55vw;
 }
