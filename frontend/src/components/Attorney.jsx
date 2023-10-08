@@ -61,7 +61,16 @@ export default function Attorney() {
         onChange={handleFilterChange}
       />
       <div className="parent">
-        <p className="casesIntro">Current Cases</p>
+        {filteredCases.length ? <>
+          <p className="casesIntro">Current Cases</p>
+          {/* Render filtered cards */}
+          {filteredCases.map((caseItem, index) => (
+            <SingleCard key={index} value={caseItem} />
+          ))}
+        </> : 
+          <p className="noCases">Currently, There Are No Cases</p>
+        }
+        {/* <p className="casesIntro">Current Cases</p> */}
 
         {/* Render filtered cards */}
         {filteredCases.map((caseItem, index) => (

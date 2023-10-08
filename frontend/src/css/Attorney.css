@@ -109,6 +109,19 @@ span,
   overflow-y: auto;
   text-align: center;
 }
+
+.noCases {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 100;
+
+  width: 25rem;
+  height: 0;
+  padding: 2rem;
+  margin: 2rem;
+  margin-bottom: -2.5rem !important;
+}
+
 .casesIntro {
   text-align: center;
   font-size: 36px;
