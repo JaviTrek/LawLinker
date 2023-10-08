@@ -23,19 +23,13 @@ export default function Client() {
 
   return (
     <div className="client">
-      <h1 className="intro">
-        Skip the hassle of typing. LawLinker's AI effortlessly transcribes your
-        spoken responses
-      </h1>
-      <Form />
-      <span className="orLine">OR</span>
-      <span className="orLine-afterText">
-        talk to our <br></br> AI assistance{' '}
-      </span>
-      <VoiceRecord/>
-      <div className="voice-container">
-        <div className="insideBox"></div>
+      <div className="intro-container">
+        <h1 className="intro">
+          Skip the hassle of typing. LawLinker's AI effortlessly transcribes your
+          spoken responses
+        </h1>
       </div>
+      <VoiceRecord/>
     </div>
   );
 }

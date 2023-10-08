@@ -22,7 +22,11 @@ const Form = () => {
   //   handleUpdate();
   // }, [defaultValues]);
 
-  const { control, register, handleSubmit, setValue } = useForm({
+  const { 
+    control, 
+    register, 
+    handleSubmit, 
+    setValue } = useForm({
     defaultValues: defaultValues,
   });
 
