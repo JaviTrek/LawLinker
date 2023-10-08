@@ -215,3 +215,10 @@ li {
 
   font-weight: 100;
 }
+
+.loading-animation {
+  position: absolute;
+  width: 19rem;
+  top: 20rem;
+  text-align: center;
+}

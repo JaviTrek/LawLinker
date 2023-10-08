@@ -68,9 +68,6 @@
   display: flex; /* Display when expanded */
 }
 
-/* .is-collapsed {
-} */
-
 /* Style for the expanded state */
 .is-expanded {
   display: block;
