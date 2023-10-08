@@ -1,29 +1,26 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import '../css/FrontPage.css';
-import axios from "axios"
+import axios from 'axios';
 import logo from '../assets/logo10.png';
 
 import leftImage from '../assets/leftImge2.svg';
 
 import React from 'react';
 
-
-
 function FrontPage() {
+  useEffect(() => {
+    const pingServer = async () => {
+      try {
+        axios
+          .get('http://localhost:4000/mongo/attorney')
+          .then((data) => console.log(data));
+      } catch (error) {
+        console.error('Error pinging server:', error);
+      }
+    };
 
-    useEffect(() => {
-        const pingServer = async () => {
-            try {
-                const response = await axios.post('http://localhost:4000/mongo/newCase'); // adjust the URL if needed, e.g., 'http://localhost:4000/newCase'
-                console.log('Response from server:', response.data);
-            } catch (error) {
-                console.error('Error pinging server:', error);
-            }
-        };
-
-        pingServer();
-    }, []);  // Empty dependency array means this useEffect will run once when the component mounts
-
+    pingServer();
+  }, []); // Empty dependency array means this useEffect will run once when the component mounts
 
   return (
     <div className="landingContainer">
@@ -48,7 +45,7 @@ function FrontPage() {
 
       <span className="descLanding"></span>
       <div className="imgContainer">
-        <img src={leftImage} alt=" -image" className="leftImage" />
+        <img src={leftImage} alt=" -image" className="searchImage" />
       </div>
 
       <span className="qtext">Are you Client or Attoreny?</span>

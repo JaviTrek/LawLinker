@@ -56,14 +56,14 @@ app.post('/transcribe', upload.single('audio'), async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4", messages: [{
                 role: "user",
-                content: `Given the provided narrative of a client's incident, please structure the information into the following format (a JSON object): 
+                content: `Given the provided narrative of a client's incident, please structure the information into the following format, but make sure your response is in a stringified json with an attribute case for everything below and an attribute missing information for any of the fields the client did not provide: 
                 {\\"Contact Information\\": {\\"Full Name\\": \\"[Extracted Full Name]\\", \\"Phone Number\\": \\"[Extracted Phone Number]\\", \\"Email Address\\": \\"[Extracted Email Address]\\", \\"Languages Spoken\\": \\"[Extracted Languages]\\"}, \\"Basic Case Details\\": {\\"Case Type\\": \\"[Infer the Case Type]\\", \\"Date of Incident\\": \\"[Extracted Date]\\", \\"Location of Incident\\": \\"[Extracted Location]\\"}, \\"Detailed Incident Description\\": \\"[Extracted Detailed Description]\\", \\"Injuries or Damages\\": {\\"Description\\": \\"[Extracted Description of Injuries]\\", \\"Damages\\": [\\"[Extracted Damage 1]\\", \\"[Extracted Damage 2]\\", \\"...\\"]}, \\"Evidence\\": \\"[Extracted Details on Available Evidence]\\", \\"Preferred Outcome\\": \\"[Extracted or Inferred Desired Outcome]\\"}. 
                 
                 If any portion of the narrative is not in English, please translate it. Ensure the information is as accurate and comprehensive as possible based on the provided narrative. If any field or information is missing, simply put "Not provided by client". This is the description from the client: ${transcript.text}`
             }]
         })
-
-        console.log(completion.choices[0].message)
+        console.log(completion.choices[0].message);
+        console.log(JSON.parse(completion.choices[0].message));
         console.log(transcript);
         res.set('Content-Type', 'text/plain');
         res.json({transcription: completion.choices[0].message.content});

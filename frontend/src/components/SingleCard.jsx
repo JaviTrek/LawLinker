@@ -1,24 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/Attorney.css';
 import doneImg from '../assets/done.svg';
 
 const SingleCard = ({ value }) => {
-  const {
-    caseName,
-    clientFname,
-    clientLname,
-    clientPhoneNumber,
-    clientZipCode,
-    clientEmail,
-    caseType,
-    caseDescription,
-    dateCreated,
-  } = value;
+  if (!value || !value.basicCaseDetails || !value.contactInformation) {
+    return null; // or render a placeholder or error message
+  }
+  useEffect(() => {
+    if (value) {
+      console.log(value.basicCaseDetails.caseType);
+    }
+  }, [value]);
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleAccordion = () => {
-    console.log(value);
     setIsCollapsed(!isCollapsed);
   };
 
@@ -26,24 +22,33 @@ const SingleCard = ({ value }) => {
     <div className={`card ${isCollapsed ? 'is-collapsed' : 'is-expanded'}`}>
       <div className="ch-row">
         <div className="ch-col1">
-          <div className="caseName">{caseName}</div>
-          <lebal className="berforOut">Case Type: </lebal>
-          <span className="caseType">{caseType}</span>
+          <div className="caseName">{value.basicCaseDetails.caseType}</div>
+          <label className="berforOut">Date of Incident: </label>
+          <span className="caseType">
+            {value.basicCaseDetails.dateOfIncident}
+          </span>
+          <br />
+          <label className="berforOut">Location of Incident: </label>
+          <span className="caseType">
+            {value.basicCaseDetails.locationOfIncident}
+          </span>
         </div>
         <div className="Name">
-          <lebal className="berforOut"> First Name:</lebal>
+          <label className="berforOut">Full Name:</label>
+          <span className="first">{value.contactInformation.fullName}</span>
+          <br />
+          <label className="berforOut">Phone Number: </label>
+          <span className="first">{value.contactInformation.phoneNumber}</span>
+
+          <br />
+          <label className="berforOut">Email Address: </label>
+          <span className="first">{value.contactInformation.emailAddress}</span>
+          <br />
+          <label className="berforOut">Languages Spoken: </label>
           <span className="first">
-            {clientFname}
-            <br></br>
-          </span>
-          <lebal className="berforOut">Last Name: </lebal>
-          <span className="last">
-            {''}
-            {clientLname}
+            {value.contactInformation.languagesSpoken}
           </span>
         </div>
-        <lebal className="berforOut">Date Created: </lebal>
-        <span className="Date">{dateCreated}</span>
       </div>
 
       <div className="row1 more-fields">
@@ -69,21 +74,29 @@ const SingleCard = ({ value }) => {
             >
               <div className="expandedContainer">
                 <div className="caseDes">
-                  <lebal className="berforOut">Case Description: </lebal>
-
+                  <label className="berforOut">Incident Description: </label>
                   <span className="textDesc">
-                    <br></br>
-                    {caseDescription}
+                    {value.detailedIncidentDescription}
                   </span>
                 </div>
-                <div className="clientConnect">
-                  <lebal className="berforOut">Phone Number: </lebal>
-                  <span className="phone">
-                    {clientPhoneNumber}
-                    <br></br>
+                <div className="evidence">
+                  <label className="berforOut">Evidence: </label>
+                  <span className="textDesc">{value.evidence}</span>
+                </div>
+                <div className="injuriesOrDamages">
+                  <label className="berforOut">Injuries Description: </label>
+                  <span className="textDesc">
+                    {value.injuriesOrDamages.description}
                   </span>
-                  <lebal className="berforOut">Email Address: </lebal>
-                  <span className="email">{clientEmail}</span>
+                  <br />
+                  <label className="berforOut">Damages: </label>
+                  <span className="textDesc">
+                    {value.injuriesOrDamages.damages.join(', ')}
+                  </span>
+                </div>
+                <div className="preferredOutcome">
+                  <label className="berforOut">Preferred Outcome: </label>
+                  <span className="textDesc">{value.preferredOutcome}</span>
                 </div>
               </div>
             </dd>

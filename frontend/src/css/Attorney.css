@@ -1,12 +1,12 @@
 .card {
   padding: 20px;
   margin: 20px;
-  background-color: #ffffffec;
+  background-color: rgb(59, 59, 59);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   /* Set flex display for horizontal layout */
   flex-direction: row-reverse; /* Default to column layout */
-  width: 25rem;
+  width: 35rem;
   margin-top: 1rem;
   padding: 2rem;
   display: block;
@@ -17,15 +17,15 @@
 /* Style for the card title */
 .caseName {
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 300;
   margin-bottom: 10px;
-  color: rgb(59, 59, 59);
+  color: rgb(255, 255, 255);
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .berforOut {
-  color: black;
+  color: rgb(168, 168, 168);
   font-weight: 300;
   font-size: 23px;
   padding: 4px;
@@ -40,21 +40,21 @@
 /* Style for the accordion toggle button */
 .accordionTitle {
   cursor: pointer;
-  color: black;
-  font-weight: 100;
+  color: rgb(239, 239, 239);
+  font-weight: 300;
   margin: 10px 0;
   text-decoration: none;
   align-self: flex-start; /* Align to the left */
 }
 .accordionTitle:hover {
-  font-weight: 300;
-  color: red;
+  font-weight: 400;
+  color: rgb(233, 79, 79);
 }
 
 /* Style for the accordion content */
 .accordion-content {
   padding: 10px;
-  background-color: #c7c7c635;
+  background-color: rgb(59, 59, 59);
   border-top: none;
   border-radius: 0 0 5px 5px;
   display: none; /* Initially hidden */
@@ -80,7 +80,7 @@
 
 span,
 .caseType {
-  color: rgb(80, 79, 79);
+  color: #fdd771;
   font-size: 21px;
   font-weight: 300;
 }
@@ -100,13 +100,13 @@ span,
 .parent {
   position: absolute;
 
-  right: -6rem;
-  top: -2rem;
+  right: -5rem;
+  top: 2rem;
 
   justify-content: center;
   text-align: center;
 
-  width: 600px;
+  width: 700px;
   height: calc(104vh);
   overflow-x: hidden;
   overflow-y: auto;
@@ -131,4 +131,64 @@ span,
 
 .doneImg:hover {
   width: 2rem;
+}
+
+.input-form {
+  position: absolute;
+  display: inline-block;
+  font-weight: 300;
+  font-size: medium;
+  padding: 1rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: rgb(59, 59, 59);
+  outline: none;
+  margin-top: 2rem;
+  margin-left: 2rem;
+
+  top: 40rem;
+  left: 7rem;
+
+  width: 30%;
+}
+
+.input-form:hover {
+  border: 0.5px solid #fceb09;
+}
+
+.input-form:focus {
+  outline: 0.5px solid #fceb09;
+}
+
+.searchImage {
+  position: absolute;
+  z-index: -1;
+  top: 20rem;
+  left: 0rem;
+  object-fit: contain;
+  height: 40vh;
+  width: 55vw;
+}
+
+.temp {
+  color: #fceb09;
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.desc {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 100;
+  color: #9e9b9b;
+  line-height: 2.3rem;
+  margin-top: -1.5rem;
+}
+
+.textContainer {
+  margin-top: 9rem;
+  height: 60%;
+  width: 50%;
+  margin-left: 2rem;
 }
