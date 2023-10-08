@@ -16,8 +16,6 @@ function FrontPage() {
         const pingServer = async () => {
             try {
                 axios.get("http://localhost:4000/mongo/attorney").then(data =>  console.log(data))
-                const response = await axios.post('http://localhost:4000/mongo/newCase'); // adjust the URL if needed, e.g., 'http://localhost:4000/newCase'
-                console.log('Response from server:', response.data);
             } catch (error) {
                 console.error('Error pinging server:', error);
             }

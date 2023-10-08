@@ -54,14 +54,15 @@ app.post('/transcribe', upload.single('audio'), async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4", messages: [{
                 role: "user",
-                content: `Given the provided narrative of a client's incident, please structure the information into the following format, but make sure your response is in a stringified json with an attribute "case" for everything below and an attribute "missing" information for any of the fields the client did not provide. Here is the properties for case.  
+                content: `Given the provided narrative of a client's incident, please structure the information into the following format, but make sure your response is a stringified json with an attribute "case" for everything below and an attribute "missing" information for any of the fields the client did not provide. please generate a JSON representation of the details without adding any extra escaping. Format the JSON like this:
+
                  
                            {
                 "contactInformation": {
                     "fullName": "[Extracted Full Name]",
                     "phoneNumber": "[Extracted Phone Number]",
                     "emailAddress": "[Extracted Email Address]",
-                    "languagesSpoken": "[Extracted Languages]"
+                    "languagesSpoken": "[The language or languages the transcript is in]"
                 },
                 "basicCaseDetails": {
                     "caseType": "[Infer the Case Type]",
@@ -70,8 +71,8 @@ app.post('/transcribe', upload.single('audio'), async (req, res) => {
                 },
                 "detailedIncidentDescription": "[Extracted Detailed Description Summarized for better understanding]",
                 "injuriesOrDamages": {
-                    "description": "[Extracted Description of Injuries]",
-                    "damages": ["[Extracted Damage 1]", "[Extracted Damage 2]", "..."]
+                    "description": "[Extracted Description of Injuries or damages]",
+                    "damages": [Array of itemized damages]
                 },
                 "evidence": "[Extracted Details on Available Evidence]",
                 "preferredOutcome": "[Extracted or Inferred Desired Outcome]"
@@ -112,7 +113,6 @@ app.post('/addMissing', upload.single('audio'), async (req, res) => {
     console.log(req.body.transcript);
 
     try {
-
         // Create a temporary file to save the buffer
         const tmpFile = await tmp.file({postfix: '.wav'});
         // Write the buffer to the temporary file
@@ -127,7 +127,7 @@ app.post('/addMissing', upload.single('audio'), async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4", messages: [{
                 role: "user",
-                content: `Given the provided narrative of a client's incident, please structure the information into the following format, but make sure your response is in a stringified json with an attribute "case" for everything below and an attribute "missing" information for any of the fields the client did not provide. Here is the properties for case.  
+                content: `Given the provided narrative of a client's incident, please structure the information into the following format, but make sure your response is in a stringified json with an attribute "case" that will use this template:
                  
                            {
                 "contactInformation": {
@@ -150,7 +150,13 @@ app.post('/addMissing', upload.single('audio'), async (req, res) => {
                 "preferredOutcome": "[Extracted or Inferred Desired Outcome]"
             }
                 
-                If any portion of the narrative is not in English, please translate it. Ensure the information is as accurate and comprehensive as possible based on the provided narrative. If any field or information is missing, do not add that field to "case" instead add the field to the "missing" attribute. However, if there is already information about it, dont add it to the missing field then. The missing attribute should be an array of strings of what's missing. Very important, if nothing is missing, just leave the missing attribute as an empty array. 
+                If any portion of the narrative is not in English, please translate it. Ensure the information is as accurate and comprehensive as possible based on the provided narrative. 
+                
+                If any field or information is missing, do not add that field to "case" instead add the description of the field (such as fullName becomes "Full Name") to the "missing" attribute. However, if there is already information about it in our case or description, dont add it to the missing field then. 
+                
+                The missing attribute should be an array of strings of what's missing. Very important, if nothing is missing, just leave the missing attribute as an empty array. 
+                
+                
                 
                 This is the description from the client:${req.body.transcript} ${transcript.text} REMEMBER YOUR RESPONSE IS IN A STRINGIFIED JSON, DO NOT RESPOND IN ANY OTHER FORMAT!`
             }]
