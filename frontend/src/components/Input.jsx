@@ -3,8 +3,7 @@ import '../css/FrontPage.css';
 //VERY IMPORTANT TO IMPORT STYLING!
 import '../css/Interface.css';
 import { useState } from 'react';
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+
 
 export default function Input() {
   const [formData, setFormData] = useState({
